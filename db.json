@@ -1,0 +1,10 @@
+{
+  "tasks": [
+    {
+      "text": "Wake Up",
+      "day": "5th Friday 2022",
+      "reminder": true,
+      "id": 1
+    }
+  ]
+}
