@@ -33,26 +33,33 @@ const App = () => {
 
   //Fetch Tasks
   const fetchTasks = async () => {
-    const res = await fetch("http://localhost:3000/tasks");
+    const res = await fetch(
+      "https://react-task-tracker-serve-app.herokuapp.com/tasks"
+    );
     const data = await res.json();
     return data;
   };
 
   const fetchTask = async (id) => {
-    const res = await fetch(`http://localhost:3000/tasks/${id}`);
+    const res = await fetch(
+      `https://react-task-tracker-serve-app.herokuapp.com/tasks/${id}`
+    );
     const data = await res.json();
     return data;
   };
 
   //ADD TASK
   const addTask = async (task) => {
-    const res = await fetch("http://localhost:3000/tasks", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(task), // turn into javascript object to json string
-    });
+    const res = await fetch(
+      "https://react-task-tracker-serve-app.herokuapp.com/tasks",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(task), // turn into javascript object to json string
+      }
+    );
 
     const data = await res.json();
 
@@ -65,9 +72,12 @@ const App = () => {
 
   //DELETE TASK
   const deleteTask = async (id) => {
-    await fetch(`http://localhost:3000/tasks/${id}`, {
-      method: "DELETE",
-    });
+    await fetch(
+      `https://react-task-tracker-serve-app.herokuapp.com/tasks/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
@@ -75,13 +85,16 @@ const App = () => {
     const taskToToogle = await fetchTask(id);
     const updTask = { ...taskToToogle, reminder: !taskToToogle.reminder };
 
-    const res = await fetch(`http://localhost:3000/tasks/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updTask),
-    });
+    const res = await fetch(
+      `https://react-task-tracker-serve-app.herokuapp.com/tasks/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updTask),
+      }
+    );
 
     const data = await res.json();
 
